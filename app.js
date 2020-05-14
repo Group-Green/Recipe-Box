@@ -29,7 +29,6 @@ mongoose.connect(connectiong_string)
         console.log('Connection Failure: An error has occurred - error ', err);
     });
 
-
 var app = express();
 
 // view engine setup
