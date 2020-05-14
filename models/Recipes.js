@@ -13,11 +13,11 @@ const recipe_schema = new Schema({
         required: true
     },
     main_ingredients: {
-        type: [{}],
+        type: [],
         required: true
     },
     sub_ingredients: {
-        type: [{}]
+        type: []
     },
     instructions: {
         type: String,
