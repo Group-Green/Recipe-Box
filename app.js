@@ -13,7 +13,7 @@ var usersRouter = require('./routes/users');
 // database setup
 console.log('<<-- Initiating Mongoose Test -->>');
 
-let connectiong_string = 'mongodb://127.0.0.1:27017/my_personal_library?retryWrites=true&w=majority';
+let connectiong_string = 'mongodb://127.0.0.1:27017/team_green_recipe_blog?retryWrites=true&w=majority';
 
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useCreateIndex', true);
