@@ -30,11 +30,9 @@ mongoose.connect(connectiong_string)
       // run mongoDB data creation function here:
       recipe_data();
       user_data();
-1
     })
     .catch((err) => {
       console.log('Connection Failure: An error has occurred - error ', err);
-
     });
 
 // mock data functions
@@ -99,6 +97,8 @@ function user_data() {
       });
 
 }
+
+// setting up express
 
 var app = express();
 
