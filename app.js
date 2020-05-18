@@ -10,6 +10,7 @@ let MongoClient = require('mongodb').MongoClient;
 // application module imports
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+let recipesRouter = require('./routes/recipes');
 let { Recipe, User } = require('./models');
 
 // database setup
@@ -29,7 +30,7 @@ mongoose.connect(connectiong_string)
       // run mongoDB data creation function here:
       recipe_data();
       user_data();
-
+1
     })
     .catch((err) => {
       console.log('Connection Failure: An error has occurred - error ', err);
@@ -61,7 +62,8 @@ function recipe_data() {
           '1 cup confectioners\' suger'
       ],
       instructions: 'Preheat oven to 350 degrees F (175 degrees C). Grease and flour an 8-inch square pan. In a large saucepan, melt 1/2 cup butter. Remove from heat, and stir in sugar, eggs, and 1 teaspoon vanilla. Beat in 1/3 cup cocoa, 1/2 cup flour, salt, and baking powder. Spread batter into prepared pan. Bake in preheated oven for 25 to 30 minutes. Do not overcook. To Make Frosting: Combine 3 tablespoons softened butter, 3 tablespoons cocoa, honey, 1 teaspoon vanilla extract, and 1 cup confectioners\' sugar. Stir until smooth. Frost brownies while they are still warm.',
-      notes: 'Prep: 25 mins Cook: 35 mins Total: 1 hr Servings: 16 Yield: 16 brownies'
+      notes: 'Prep: 25 mins Cook: 35 mins Total: 1 hr Servings: 16 Yield: 16 brownies',
+      public: true
   });
 
   let save_promise_one = recipe_one.save();
@@ -112,6 +114,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/showrecipes', recipesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

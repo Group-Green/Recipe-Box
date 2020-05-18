@@ -1,7 +1,26 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Recipe Box
+    link(rel="stylesheet", type="text/css", href='/stylesheets/style.css')
   body
+    div(id='header')
+      div(id='logo')
+        img(src='#', alt='Recipe Logo')
+      div(id='nav')
+        ul(id='pageNav')
+          li 
+            a(href='/') Home
+          li 
+            a(href='/profile') Profile
+          li
+            a(href='/recipes') Recipes
+        ul(id='userNav')
+          li
+            a(href='/login') Login
+          li
+            a(href='') Sign Up
     block content
+
+  footer
+    a(href="/") Back to top

@@ -23,7 +23,11 @@ const recipe_schema = new Schema({
         type: String,
         required: true
     },
-    notes: String
+    notes: String,
+    public: {
+        type: Boolean,
+        required: true
+    }
 });
 
 const Recipe = mongoose.model('recipes', recipe_schema);
