@@ -32,7 +32,7 @@ mongoose.connect(connectiong_string)
       user_data();
     })
     .catch((err) => {
-      console.log('Connection Failure: An error has occurred - error ', err);
+      console.log('<<-- Connection Failure: An error has occurred - error -->>', err);
     });
 
 // mock data functions
