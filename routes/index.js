@@ -50,4 +50,5 @@ MongoClient.connect(url, function(err, client) {
     res.render('login');
   });
 });
+
 module.exports = router;
