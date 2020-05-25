@@ -43,5 +43,11 @@ MongoClient.connect(url, function(err, client) {
   router.get('/recipes', function(req, res, next) {
     res.render('recipes');
   });
+
+  /* GET login page */
+
+  router.get('/login', function(req, res, next) {
+    res.render('login');
+  });
 });
 module.exports = router;

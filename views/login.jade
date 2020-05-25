@@ -1,0 +1,16 @@
+html
+  head
+    title Recipe Box
+    link(rel='stylesheet', type='text/css', href='/stylesheets/login_style.css')
+  body
+    div(id='mainHolder')
+      a(class='backImg' href='/')
+        img(class='backImg' src='#' alt='Arrow')
+      h1(id='loginHeader')='Login'
+      div(id='loginErrorMsgHolder')
+        p(id='loginErrorMsg')= 'Invalid username and/or password'
+      form(id='loginForm')
+        input(type='text' placeholder='Username' id='usernameField' class='loginFormField' name='username' required)
+        input(type='password' placeholder='Password' name='password' id='passwordField' class='loginFormField' required)
+        input(type='submit' value='Login' id='loginFormSubmit')
+
