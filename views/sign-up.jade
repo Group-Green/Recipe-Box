@@ -1,0 +1,24 @@
+html
+  head
+    title Recipe Box | Sign Up
+    link(rel='stylesheet', type='text/css', href='/stylesheets/sign_up_style.css')
+  body
+    div(id='mainHolder')
+      a(class='backImg' href='/')
+        img(class='backImg' src='#' alt='Arrow')
+      h1(id='signUpHeader')='Sign Up'
+      p(id='signUpRequiredText')='Fields with a * are required.'
+      div(id='signUpErrorMsgHolder')
+        p(id='signUpErrorMsg')= 'Invalid username and/or password'
+      form(id='signUpForm')
+        input(type='text' placeholder='First Name*' id='firstNameField' class='signUpFormField' name='firstName' required)
+        input(type='text' placeholder='Middle Name' id='middleNameField' class='signUpFormField' name='middleName')
+        input(type='text' placeholder='Last Name*' id='lastNameField' class='signUpFormField' name='lastName' required)
+        input(type='text' placeholder='Example@email.com*' id='emailField' class='signUpFormField' name='email' required)
+        input(type='text' placeholder='UserName*' id='userNameField' class='signUpFormField' name='userName' required)
+        input(type='text' placeholder='Password*' id='passwordField' class='signUpFormField' name='password' required)
+        input(type='text' placeholder='Confirm Password*' id='passwordConfirmField' class='signUpFormField' name='confirmPassword' required)
+        input(type='text' placeholder='Admin ID' id='adminIdField' class='signUpFormField' name='adminId')
+        input(type='submit' value='Sign Up' id='signUpFormSubmit')
+
+script(type='text/javascript' src='/javascripts/sign_up.js')
