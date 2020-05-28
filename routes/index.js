@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-let recipe = require('./recipes');
 let MongoClient = require('mongodb').MongoClient;
 let assert = require('assert');
 

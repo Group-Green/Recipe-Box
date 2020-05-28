@@ -10,7 +10,6 @@ let MongoClient = require('mongodb').MongoClient;
 // application module imports
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-let recipesRouter = require('./routes/recipes');
 let { Recipe, User } = require('./models');
 
 // database setup
@@ -204,7 +203,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/showrecipes', recipesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

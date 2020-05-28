@@ -2,4 +2,3 @@
 
 // Modles exported
 exports.User = require('./Users');
-exports.Recipe = require('./Recipes');
