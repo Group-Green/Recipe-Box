@@ -36,12 +36,45 @@ MongoClient.connect(url, function(err, client) {
 
   router.get('/profile', function(req, res, next) {
     res.render('profile');
+
+    // Create an if statement. If user render profile page. Else render login page.
+
   });
+
+  // Find listed recipes in Recipe Page
+
+  const findRecipesA_E = function() {
+    const collection = db.collection('recipes');
+    return collection.find({'title': /^[a-eA-E]/gm, 'public': true}).toArray();
+  }
+  const findRecipesF_J = function() {
+    const collection = db.collection('recipes');
+    return collection.find({'title': /^[f-jF-J]/gm, 'public': true}).toArray();
+  }
+  const findRecipesK_O = function() {
+    const collection = db.collection('recipes');
+    return collection.find({'title': /^[k-oK-O]/gm, 'public': true}).toArray();
+  }
+  const findRecipesP_T = function() {
+    const collection = db.collection('recipes');
+    return collection.find({'title': /^[p-tP-T]/gm, 'public': true}).toArray();
+  }
+  const findRecipesU_Z = function() {
+    const collection = db.collection('recipes');
+    return collection.find({'title': /^[u-zU-Z]/gm, 'public': true}).toArray();
+  }
+
 
   /* GET recipes page */
 
-  router.get('/recipes', function(req, res, next) {
-    res.render('recipes');
+  router.get('/recipes', async function(req, res, next) {
+    const recipesA_E = await findRecipesA_E();
+    const recipesF_J = await findRecipesF_J();
+    const recipesK_O = await findRecipesK_O();
+    const recipesP_T = await findRecipesP_T();
+    const recipesU_Z = await findRecipesU_Z();
+
+    res.render('recipes', {recipesA_E, recipesF_J, recipesK_O, recipesP_T, recipesU_Z});
   });
 
   /* GET login page */

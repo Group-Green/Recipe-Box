@@ -30,6 +30,11 @@ img.backImg {
     opacity: 60%;
 }
 
+.backImg {
+    justify-self: left;
+    align-self: start;
+}
+
 #loginErrorMsgHolder {
     width: 100%;
     height: 100%;

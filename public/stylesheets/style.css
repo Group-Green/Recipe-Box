@@ -50,3 +50,40 @@ div#nav ul li a {
 div#nav ul li:hover {
   background-color: darkgrey;
 }
+
+#recipeSearchOptions {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: baseline;
+  align-content: center;
+  list-style: none;
+  font-size: 110%;
+  padding: 0;
+  margin: 35px 80px;
+}
+
+/* STYLE FOR RECIPES.jade PAGE */
+
+ul#recipeSearchOptions li {
+  color: grey;
+}
+
+ul#recipeSearchOptions li:hover {
+    color: black;
+}
+
+div#recipeSearchFeed {
+
+}
+
+div#recipesA_E, div#recipesF_J,
+div#recipesK_O, div#recipesP_T,
+div#recipesU_Z {
+  display: none;
+}
+
+div.recipe {
+
+}

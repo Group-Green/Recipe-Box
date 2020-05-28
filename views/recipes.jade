@@ -2,4 +2,90 @@ extends layout
 
 block content
 
-  p our recipe page
+  div(id='recipeSearch')
+  h1='Recipe Catalog'
+  h4='Search Recipe by Title'
+    ul(id='recipeSearchOptions')
+      li(onclick='A_E()')='A-E'
+      li(onclick='F_J()')='F-J'
+      li(onclick='K_O()')='K-O'
+      li(onclick='P_T()')='P-T'
+      li(onclick='U_Z()')='U-Z'
+  div(id='recipeSearchFeed')
+    div(id='recipesA_E')
+      div(class='recipeFeed')
+      each val in recipesA_E
+        div(class='recipe')
+          h3= val.title
+          p= val.author
+          ul
+            each subVal in val.main_ingredients
+              li= subVal
+          if !Object.sub_ingredients
+            ul
+              each subVal in val.sub_ingredients
+                li= subVal
+          p= val.instructions
+          p= val.notes
+    div(id='recipesF_J')
+      div(class='recipeFeed')
+      each val in recipesF_J
+        div(class='recipe')
+          h3= val.title
+          p= val.author
+          ul
+            each subVal in val.main_ingredients
+              li= subVal
+          if !Object.sub_ingredients
+            ul
+              each subVal in val.sub_ingredients
+                li= subVal
+          p= val.instructions
+          p= val.notes
+    div(id='recipesK_O')
+      div(class='recipeFeed')
+      each val in recipesK_O
+        div(class='recipe')
+          h3= val.title
+          p= val.author
+          ul
+            each subVal in val.main_ingredients
+              li= subVal
+          if !Object.sub_ingredients
+            ul
+              each subVal in val.sub_ingredients
+                li= subVal
+          p= val.instructions
+          p= val.notes
+    div(id='recipesP_T')
+      div(class='recipeFeed')
+      each val in recipesP_T
+        div(class='recipe')
+          h3= val.title
+          p= val.author
+          ul
+            each subVal in val.main_ingredients
+              li= subVal
+          if !Object.sub_ingredients
+            ul
+              each subVal in val.sub_ingredients
+                li= subVal
+          p= val.instructions
+          p= val.notes
+    div(id='recipesU_Z')
+      div(class='recipeFeed')
+      each val in recipesU_Z
+        div(class='recipe')
+          h3= val.title
+          p= val.author
+          ul
+            each subVal in val.main_ingredients
+              li= subVal
+          if !Object.sub_ingredients
+            ul
+              each subVal in val.sub_ingredients
+                li= subVal
+          p= val.instructions
+          p= val.notes
+
+  script(type='text/javascript' src='/javascripts/recipes.js')

@@ -18,26 +18,41 @@ signUpButton.addEventListener('click', (e) => {
     let userPassword;
     let adminId = false;
 
+    if (signUpForm.adminId.value == 'Admin123') {
+        alert('Welcome Admin User!');
+        adminId = true;
+    }
+
     if (signUpForm.password.value == signUpForm.confirmPassword.value) {
         userPassword = signUpForm.password.value;
     } else {
         alert('Your Passwords did not match. Please fill out the Sign Up form again.');
     }
 
-    if (signUpForm.adminId.value == 'Admin123') {
-        alert('Welcome Admin User!');
-        adminId = true;
-    }
+    if (
+        firstName.length != 0 &&
+        lastName.length != 0 && 
+        userEmail.length != 0 &&
+        userName.length != 0 &&
+        userPassword.length != 0
+        ) {
 
-    const new_user = {
-        first_name: firstName,
-        middle_name: middleName,
-        last_name: lastName,
-        email: userEmail,
-        user_name: userName,
-        password: userPassword,
-        member_status: true,
-        admin_status: adminId
+        const new_user = {
+            first_name: firstName,
+            middle_name: middleName,
+            last_name: lastName,
+            email: userEmail,
+            user_name: userName,
+            password: userPassword,
+            member_status: true,
+            admin_status: adminId
+        }
+
+        console.log(new_user);
+
+    } else {
+        console.log('No new user was created.');
+        alert('Something on the form was incorrect. Please try filling out the form again.');
     }
 
     console.log(new_user);
