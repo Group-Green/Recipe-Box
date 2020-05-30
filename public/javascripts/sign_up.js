@@ -23,10 +23,11 @@ signUpButton.addEventListener('click', (e) => {
         adminId = true;
     }
 
-    if (signUpForm.password.value == signUpForm.confirmPassword.value) {
+    if (signUpForm.password.value === signUpForm.confirmPassword.value) {
         userPassword = signUpForm.password.value;
     } else {
         alert('Your Passwords did not match. Please fill out the Sign Up form again.');
+        return false;
     }
 
     if (
@@ -45,17 +46,16 @@ signUpButton.addEventListener('click', (e) => {
             user_name: userName,
             password: userPassword,
             member_status: true,
-            admin_status: adminId
-        }
+            admin_status: false
+        };
 
         console.log(new_user);
 
     } else {
         console.log('No new user was created.');
         alert('Something on the form was incorrect. Please try filling out the form again.');
+        return false;
     }
-
-    console.log(new_user);
 });
 
 
