@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  main
+  div(id='indexPageBody')
     div(id='recipeFeed')
       each val in recipes
         div(class='recipe')
@@ -16,5 +16,6 @@ block content
                 li= subVal
           p= val.instructions
           p= val.notes
+        div(class='recipeDivide')
         
     

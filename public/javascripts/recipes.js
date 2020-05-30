@@ -1,6 +1,17 @@
 // create hidden div for query results, onclick for display change from none.
 
+function showAllRecipes() {
+    document.getElementById('showAllRecipes').style.display = 'block';
+    document.getElementById('recipesA_E').style.display = 'none';
+    document.getElementById('recipesF_J').style.display = 'none';
+    document.getElementById('recipesK_O').style.display = 'none';
+    document.getElementById('recipesP_T').style.display = 'none';
+    document.getElementById('recipesU_Z').style.display = 'none';
+
+}
+
 function A_E() {
+    document.getElementById('showAllRecipes').style.display = 'none';
     document.getElementById('recipesA_E').style.display = 'block';
     document.getElementById('recipesF_J').style.display = 'none';
     document.getElementById('recipesK_O').style.display = 'none';
@@ -9,6 +20,7 @@ function A_E() {
 }
 
 function F_J() {
+    document.getElementById('showAllRecipes').style.display = 'none';
     document.getElementById('recipesA_E').style.display = 'none';
     document.getElementById('recipesF_J').style.display = 'block';
     document.getElementById('recipesK_O').style.display = 'none';
@@ -25,6 +37,7 @@ function K_O() {
 }
 
 function P_T() {
+    document.getElementById('showAllRecipes').style.display = 'none';
     document.getElementById('recipesA_E').style.display = 'none';
     document.getElementById('recipesF_J').style.display = 'none';
     document.getElementById('recipesK_O').style.display = 'none';
@@ -33,6 +46,7 @@ function P_T() {
 }
 
 function U_Z() {
+    document.getElementById('showAllRecipes').style.display = 'none';
     document.getElementById('recipesA_E').style.display = 'none';
     document.getElementById('recipesF_J').style.display = 'none';
     document.getElementById('recipesK_O').style.display = 'none';

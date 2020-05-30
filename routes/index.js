@@ -72,8 +72,9 @@ MongoClient.connect(url, function(err, client) {
     const recipesK_O = await findRecipesK_O();
     const recipesP_T = await findRecipesP_T();
     const recipesU_Z = await findRecipesU_Z();
+    const allRecipes = await findRecipes();
 
-    res.render('recipes', {recipesA_E, recipesF_J, recipesK_O, recipesP_T, recipesU_Z});
+    res.render('recipes', {allRecipes, recipesA_E, recipesF_J, recipesK_O, recipesP_T, recipesU_Z});
   });
 
   /* GET login page */

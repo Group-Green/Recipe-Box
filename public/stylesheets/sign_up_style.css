@@ -14,7 +14,8 @@ body {
 
 #mainHolder {
     width: 50%;
-    height: 70%;
+    height: 90%;
+    margin: 50px;
     display: grid;
     justify-items: center;
     align-items: center;

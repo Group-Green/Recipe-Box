@@ -1,5 +1,35 @@
 extends layout
 
 block content
-
-  p our profile page
+  div(id='mainProfilePageDiv')
+    div(id='pageNavigator')
+      div(id='personalRecipeTitles')
+        h3 Recipes
+        ul
+          each val in [0,1,2,3,4,5,6,7,8,9]
+            li(onClick='')=val
+        //- change out array for recipe object. Then li(onClick)=val.title
+      div(id='pageSettings')
+        h3 Profile Options
+        ul
+          li Recipe Creator
+          li Logout
+    div(id='personalRecipeFeed')
+      p This will be the recipe feed
+      //- div(id='recipeSearchFeed')
+      //-   div(id='recipesA_E')
+      //-     div(class='recipeFeed')
+      //-     each val in recipesA_E
+      //-       div(class='recipe')
+      //-         h3= val.title
+      //-         p= val.author
+      //-         ul
+      //-           each subVal in val.main_ingredients
+      //-             li= subVal
+      //-         if !Object.sub_ingredients
+      //-           ul
+      //-             each subVal in val.sub_ingredients
+      //-               li= subVal
+      //-         p= val.instructions
+      //-         p= val.notes
+    
