@@ -8,8 +8,6 @@ html
         img(class='backImg' src='#' alt='Arrow')
       h1(id='signUpHeader')='Sign Up'
       p(id='signUpRequiredText')='Fields with a * are required.'
-      div(id='signUpErrorMsgHolder')
-        p(id='signUpErrorMsg')= 'Invalid username and/or password'
       form(id='signUpForm')
         input(type='text' placeholder='First Name*' id='firstNameField' class='signUpFormField' name='firstName' value=null required)
         input(type='text' placeholder='Middle Name' id='middleNameField' class='signUpFormField' name='middleName')
@@ -21,4 +19,6 @@ html
         input(type='text' placeholder='Admin ID' id='adminIdField' class='signUpFormField' name='adminId')
         input(type='submit' value='Sign Up' id='signUpFormSubmit')
 
-script(type='text/javascript' src='/javascripts/sign_up.js')
+script(src='javascripts/js.cookie.min.js')
+script(src='javascripts/axios.min.js')
+script(type='text/javascript' src='javascripts/sign_up.js')

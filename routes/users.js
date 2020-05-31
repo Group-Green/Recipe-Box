@@ -45,8 +45,8 @@ router.post(
         user_name,
         email,
         password,
-        // member_status,
-        // admin_status, // TODO
+        member_status,
+        admin_status
       } = req.body;
       try {
         let user = await User.findOne({
@@ -65,8 +65,8 @@ router.post(
           user_name,
           email,
           password,
-          member_status: true,
-          admin_status: false,
+          member_status,
+          admin_status
         });
 
         const salt = await bcrypt.genSalt(10);
@@ -109,7 +109,6 @@ router.post(
     ],
     async (req, res) => {
       const errors = validationResult(req);
-
       if (!errors.isEmpty()) {
         return res.status(400).json({
           errors: errors.array()

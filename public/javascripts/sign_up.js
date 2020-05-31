@@ -1,14 +1,14 @@
-// import { User } from "../../models";
-
 const signUpForm = document.getElementById('signUpForm');
 const signUpButton = document.getElementById('signUpFormSubmit');
-const signUpErrorMsg = document.getElementById('signUpErrorMsg');
+
+console.log('HELLO!', signUpButton);
 
 /* Need to create a link to the database so that the new input 
     data can be saved as a new mongoDB user. */
 
 signUpButton.addEventListener('click', (e) => {
     e.preventDefault();
+    console.log('WEEEEEEEEEE');
 
     const firstName = signUpForm.firstName.value;
     const middleName = signUpForm.middleName.value;
@@ -18,8 +18,7 @@ signUpButton.addEventListener('click', (e) => {
     let userPassword;
     let adminId = false;
 
-    if (signUpForm.adminId.value == 'Admin123') {
-        alert('Welcome Admin User!');
+    if (signUpForm.adminId.value === 'Admin123') {
         adminId = true;
     }
 
@@ -30,32 +29,47 @@ signUpButton.addEventListener('click', (e) => {
         return false;
     }
 
-    if (
-        firstName.length != 0 &&
-        lastName.length != 0 && 
-        userEmail.length != 0 &&
-        userName.length != 0 &&
-        userPassword.length != 0
-        ) {
-
-        const new_user = {
-            first_name: firstName,
-            middle_name: middleName,
-            last_name: lastName,
-            email: userEmail,
-            user_name: userName,
-            password: userPassword,
-            member_status: true,
-            admin_status: false
-        };
-
-        console.log(new_user);
-
-    } else {
-        console.log('No new user was created.');
-        alert('Something on the form was incorrect. Please try filling out the form again.');
+    if (signUpForm.password.value.length < 6) {
+        alert('Your Password must be at least 6 characters.');
         return false;
     }
+
+    const new_user = {
+        first_name: firstName,
+        middle_name: middleName,
+        last_name: lastName,
+        email: userEmail,
+        user_name: userName,
+        password: userPassword,
+        member_status: true,
+        admin_status: adminId
+    };
+
+    axios.post('/user/signup', new_user)
+        .then(function (response) {
+            const token = response.data.token;
+            Cookies.set('token', token);
+            if(adminId) {
+                alert('Welcome new administrator!');
+            } else {
+                alert('Welcome new member!');
+            }
+            window.location = '/';
+            return true;
+        })
+        .catch(function (error) {
+            const errors = error.response.data.errors;
+            const errorMsg = error.response.data.msg;
+            let msg = '';
+            if (errorMsg) {
+                msg += `${errorMsg}\n`;
+            }
+            if (errors) {
+                errors.forEach(error => msg += `${error.msg}\n`);
+            }
+            alert(msg);
+            return false;
+        });
 });
 
 
