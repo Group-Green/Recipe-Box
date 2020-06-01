@@ -11,14 +11,18 @@ html
         ul(id='pageNav')
           li 
             a(href='/') Home
-          li 
+          li(id='profile')
             a(href='/profile') Profile
           li
             a(href='/recipes') Recipes
         ul(id='userNav')
-          li
+          li(id='name')
+            | Unknown
+          li(id='logout')
+            a(href='/logout') Logout
+          li(id='login')
             a(href='/login') Login
-          li
+          li(id='signup')
             a(href='/sign-up') Sign Up
     block content
 
@@ -26,16 +30,18 @@ html
       p All Rights Reserved | 2020 | Vance Weston
       ul
          li
-            a(href='/') Home
-         li |
+            a(href='/') Home |
+         li(id='profileFooter')
+            a(href='/profile') Profile |
          li
-            a(href='/profile') Profile
-         li |
-         li
-            a(href='/recipes') Recipes
-         li |
-         li
-            a(href='/login') Login
-         li |
-         li
+            a(href='/recipes') Recipes |
+         li(id='loginFooter')
+            a(href='/login') Login |
+         li(id='signupFooter')
             a(href='/sign-up') Sign Up
+         li(id='logoutFooter')
+            a(href='/logout') Logout
+
+script(src='javascripts/js.cookie.min.js')
+script(src='javascripts/axios.min.js')
+script(src='javascripts/layout.js')

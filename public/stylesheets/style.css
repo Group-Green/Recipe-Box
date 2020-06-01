@@ -193,3 +193,39 @@ div#recipesK_O, div#recipesP_T,
 div#recipesU_Z {
   display: none;
 }
+
+li#name {
+  display: none
+}
+
+li#login {
+  display: none
+}
+
+li#signup {
+  display: none
+}
+
+li#loginFooter {
+  display: none
+}
+
+li#signupFooter {
+  display: none
+}
+
+li#logout {
+  display: none
+}
+
+li#logoutFooter {
+  display: none
+}
+
+li#profile {
+  display: none
+}
+
+li#profileFooter {
+  display: none
+}

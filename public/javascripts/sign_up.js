@@ -1,14 +1,8 @@
 const signUpForm = document.getElementById('signUpForm');
 const signUpButton = document.getElementById('signUpFormSubmit');
 
-console.log('HELLO!', signUpButton);
-
-/* Need to create a link to the database so that the new input 
-    data can be saved as a new mongoDB user. */
-
 signUpButton.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log('WEEEEEEEEEE');
 
     const firstName = signUpForm.firstName.value;
     const middleName = signUpForm.middleName.value;

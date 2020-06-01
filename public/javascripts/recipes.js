@@ -1,6 +1,8 @@
 // create hidden div for query results, onclick for display change from none.
 
 function showAllRecipes() {
+    // NOTE: Example of using window variable
+    console.log('See here is the user and loggedIn status:', window.user, window.loggedIn);
     document.getElementById('showAllRecipes').style.display = 'block';
     document.getElementById('recipesA_E').style.display = 'none';
     document.getElementById('recipesF_J').style.display = 'none';

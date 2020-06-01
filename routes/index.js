@@ -35,9 +35,6 @@ MongoClient.connect(url, function(err, client) {
 
   router.get('/profile', function(req, res, next) {
     res.render('profile');
-
-    // Create an if statement. If user render profile page. Else render login page.
-
   });
 
   // Find listed recipes in Recipe Page
@@ -81,6 +78,10 @@ MongoClient.connect(url, function(err, client) {
 
   router.get('/login', function(req, res, next) {
     res.render('login');
+  });
+
+  router.get('/logout', function(req, res, next) {
+    res.render('logout');
   });
 
   /* GET Sign-Up Page */
