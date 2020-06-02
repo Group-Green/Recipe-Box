@@ -1,7 +1,9 @@
 var express = require('express');
+const { check, validationResult} = require("express-validator/check");
 var router = express.Router();
 let MongoClient = require('mongodb').MongoClient;
 let assert = require('assert');
+let {Recipe} = require('../models');
 
 // Connection Url
 const url = 'mongodb://127.0.0.1:27017/team_green_recipe_blog?retryWrites=true&w=majority';
@@ -23,6 +25,15 @@ MongoClient.connect(url, function(err, client) {
     return collection.find({'public': true}).toArray();
   }
 
+  /* Find User Specific Recipes */
+  const userRecipes = function(author_id) {
+    const collection = db.collection('recipes');
+    console.log(author_id);
+    return collection.find({author_id}).toArray();
+    // Tried to use 'author_id': window.user._id in query
+    // error that window is not defined. Need alternative route
+  }
+
   /* GET home page. */
   router.get('/', async function(req, res, next) {
     const recipes = await findRecipes();
@@ -32,10 +43,42 @@ MongoClient.connect(url, function(err, client) {
   });
 
   /* GET profile page */
-
-  router.get('/profile', function(req, res, next) {
-    res.render('profile');
+  router.get('/profile', async function(req, res, next) {
+    console.log('Is this working', req);
+    const userId = req.query.id;
+    const recipes = await userRecipes(userId);
+    res.render('profile', {recipes});
   });
+
+  router.post(
+    "/recipe_create",
+    [
+      check("title", "Please Enter a Title")
+          .not()
+          .isEmpty(),
+      check("main_ingredients", "Please Enter Some Ingredients")
+          .not()
+          .isEmpty(),
+      check("instructions", "Please Enter Some Instructions")
+          .not()
+          .isEmpty()
+    ],
+    async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({
+          errors: errors.array()
+        });
+      }
+
+      try {
+        const newRecipe = new Recipe({ ...req.body});
+        await newRecipe.save();
+       } catch (error) {
+        console.log(error.message);
+        res.status(500).send("Error in Saving");
+      }
+    });
 
   // Find listed recipes in Recipe Page
 

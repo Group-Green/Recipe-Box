@@ -5,30 +5,71 @@ block content
     div(id='pageNavigator')
       div(id='personalRecipeTitles')
         h3 Recipes
-        ul
-          each val in [0,1,2,3,4,5,6,7,8,9]
-            li(onClick='')=val
-        //- change out array for recipe object. Then li(onClick)=val.title
+        if recipes.length == 0
+          p You don't have any Recipes
+        else
+          ul
+            each val in recipes
+              li(class='profileListOfRecipes')=val.title
       div(id='pageSettings')
         h3 Profile Options
         ul
-          li Recipe Creator
-          li Logout
-    div(id='personalRecipeFeed')
-      p This will be the recipe feed
-      //- div(id='recipeSearchFeed')
-      //-   div(id='recipesA_E')
-      //-     div(class='recipeFeed')
-      //-     each val in recipesA_E
-      //-       div(class='recipe')
-      //-         h3= val.title
-      //-         p= val.author
-      //-         ul
-      //-           each subVal in val.main_ingredients
-      //-             li= subVal
-      //-         if !Object.sub_ingredients
-      //-           ul
-      //-             each subVal in val.sub_ingredients
-      //-               li= subVal
-      //-         p= val.instructions
-      //-         p= val.notes
+          li
+            button(class='recipeButton' id='recipeCreatorButton') Recipe Creator
+          li
+            button(class='recipeButton' id='myRecipesButton') My Recipes
+          li
+            button(class='recipeButton' id='profileLogoutButton') Logout
+    div(id='profileRecipeSearchFeed')
+      div(id='profileRecipes')
+        div(class='recipeFeed')
+        if recipes.length == 0
+          h3 You don't have any recipes... YET!
+        else
+          each val in recipes
+            div(class='recipe')
+              h3= val.title
+              p= val.author
+              ul
+                each subVal in val.main_ingredients
+                  li= subVal
+              if !Object.sub_ingredients
+                ul
+                  each subVal in val.sub_ingredients
+                    li= subVal
+              p= val.instructions
+              p= val.notes
+            div(class='recipeDivide')
+    div(id='recipeCreation')
+      div(id='recipeCreationBody')
+        h1(id='recipeCreationHeader')='Create a Recipe'
+        form(id='recipeCreationForm')
+          label Title:
+          br
+          input(type='text' placeholder='Recipe Title' id='recipeTitleField' class='recipeFormField' name='title' value=null required)
+          br
+          label Ingredients:
+          br
+          textarea(type='text' placeholder='Place each Ingredient on a separate line' id='recipeMainIngredientsField' class='recipeFormField' name='mainIngredients' value=null required)
+          br
+          label Other Ingredients:
+          br
+          textarea(type='text' placeholder='Place each Ingredient on a separate line' id='recipeSubIngredientsField' class='recipeFormField' name='subIngredients' value=null)
+          br
+          label Instructions:
+          br
+          textarea(type='text' placeholder='Recipe Instructions' id='recipeInstructionsField' class='recipeFormField' name='instructions' value=null required)
+          br
+          label Notes:
+          br
+          textarea(type='text' placeholder='Notes' id='recipeNotesField' class='recipeFormField' name='notes' value=null required)
+          br
+          label Public:
+          br
+          input(type='checkbox' id='recipePublicField' class='recipeForm' name='public')
+          br
+          input(type='submit' value='Create Recipe' id='recipeCreationFormSubmit')
+
+  script(src='javascripts/js.cookie.min.js')
+  script(src='javascripts/axios.min.js')
+  script(type='text/javascript' src='/javascripts/profile.js') 

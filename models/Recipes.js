@@ -12,6 +12,10 @@ const recipe_schema = new Schema({
         type: String,
         required: true
     },
+    author_id: {
+        type: String,
+        required: true
+    },
     main_ingredients: {
         type: [],
         required: true

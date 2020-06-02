@@ -14,6 +14,7 @@ axios.get('/user/me', { headers: { token, 'Content-Type': 'application/json' }})
     .then((response) => {
         window.user = response.data;
         window.loggedIn = true;
+        document.getElementById('profileLink').href = `/profile?id=${window.user._id}`;
         document.getElementById('login').style.display='none';
         document.getElementById('signup').style.display='none';
         document.getElementById('loginFooter').style.display='none';

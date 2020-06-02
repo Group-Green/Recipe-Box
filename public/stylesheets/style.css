@@ -89,7 +89,7 @@ footer#navFoot ul {
 /* STYLE FOR INDEX.jade */
 div#recipeFeed {
   margin: 35px auto 35px;
-  width: 60%;
+  width: 80%;
   height: 750px;
   overflow: scroll;
   border: 3px solid grey;
@@ -133,6 +133,99 @@ div#personalRecipeFeed {
 div#personalRecipeTitles ul li {
   list-style: none;
   margin-bottom: 5px;
+  list-style: circle inside;
+}
+
+div#profileRecipeSearchFeed {
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 6;
+  margin: 35px auto 35px;
+  width: 60%;
+  overflow: scroll;
+  border: 3px solid grey;
+  border-radius: 5px;
+  padding: 20px 20px 0;
+}
+
+div#recipeCreation {
+  display: none;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 6;
+  margin: 35px auto 35px;
+  width: 60%;
+  box-shadow: 0 0 10px grey;
+  border-radius: 30px;
+}
+
+div#recipeCreationBody {
+  margin: 15px;
+  height: 95%;
+}
+
+h1#recipeCreationHeader {
+  text-align: center;
+  text-transform: capitalize;
+  border-bottom: 2px solid grey;
+  padding-bottom: 5px;
+}
+
+form#recipeCreationForm {
+  font-size: 115%;
+  margin-left: 5%;
+}
+
+input#recipeTitleField {
+  width: 80%;
+  height: 25px;
+  padding: 5px;
+  margin: 2% 7%;
+}
+
+textarea#recipeMainIngredientsField,
+textarea#recipeSubIngredientsField,
+textarea#recipeInstructionsField,
+textarea#recipeNotesField {
+  width: 80%;
+  height: 50px;
+  padding: 5px;
+  margin: 2% 7%;
+}
+
+input#recipeCreationFormSubmit {
+  margin: 2% 7%;
+  width: 83%;
+  height: 30px;
+  border-radius: 15px;
+}
+
+input#recipeCreationFormSubmit:hover {
+    background-color: darkgrey;
+}
+
+input#recipePublicField {
+  margin: 1% 7%;
+}
+
+button#profileLogoutButton {
+  background-color: rgb(29, 28, 28);
+  color: white;
+}
+
+button#profileLogoutButton:hover {
+  background-color: grey;
+}
+
+li {
+  margin: 5px;
+  list-style: none;
+}
+
+ul {
+  padding-inline-start: 0;
 }
 
 /* STYLE FOR RECIPES.jade PAGE */
@@ -174,10 +267,6 @@ div#recipeSearch h4 {
   text-indent: 45px;
 }
 
-div#recipeSearch ul li {
-  text-indent: 50px;
-}
-
 ul#recipeSearchOptions li {
   list-style: none;
   margin-bottom: 5px;
@@ -192,6 +281,17 @@ div#recipesA_E, div#recipesF_J,
 div#recipesK_O, div#recipesP_T,
 div#recipesU_Z {
   display: none;
+}
+
+button.recipeButton {
+  width: 175px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: ghostwhite;
+}
+
+button.recipeButton:hover {
+  background-color: whitesmoke;
 }
 
 li#name {

@@ -4,110 +4,135 @@ block content
   div(id='mainRecipePageDiv')
     div(id='recipeSearch')
       h2 Recipe Catalog
-      h4(id='showAllRecipesButton' onClick='showAllRecipes()') Show All Recipes  
+      ul
+        li
+          button(class='recipeButton' id='showAllRecipesButton') Show All Recipes  
       h4 Sort Recipe by Title:
       ul(id='recipeSearchOptions')
-        li(onclick='A_E()')='A-E'
-        li(onclick='F_J()')='F-J'
-        li(onclick='K_O()')='K-O'
-        li(onclick='P_T()')='P-T'
-        li(onclick='U_Z()')='U-Z'
+        li
+          button(class='recipeButton' id='A_EButton') A - E
+        li
+          button(class='recipeButton' id='F_JButton') F - J
+        li
+          button(class='recipeButton' id='K_OButton') K - O
+        li
+          button(class='recipeButton' id='P_TButton') P - T
+        li
+          button(class='recipeButton' id='U_ZButton') U - Z
     div(id='recipeSearchFeed')
       div(id='showAllRecipes')
         div(class='recipeFeed')
-        each val in allRecipes
-          div(class='recipe')
-            h3= val.title
-            p= val.author
-            ul
-              each subVal in val.main_ingredients
-                li= subVal
-            if !Object.sub_ingredients
-              ul
-                each subVal in val.sub_ingredients
-                  li= subVal
-            p= val.instructions
-            p= val.notes
-          div(class='recipeDivide')
+          if allRecipes.length == 0
+            h2 There are no Recipes
+          else
+            each val in allRecipes
+              div(class='recipe')
+                h3= val.title
+                p= val.author
+                ul
+                  each subVal in val.main_ingredients
+                    li= subVal
+                if !Object.sub_ingredients
+                  ul
+                    each subVal in val.sub_ingredients
+                      li= subVal
+                p= val.instructions
+                p= val.notes
+              div(class='recipeDivide')
       div(id='recipesA_E')
         div(class='recipeFeed')
-        each val in recipesA_E
-          div(class='recipe')
-            h3= val.title
-            p= val.author
-            ul
-              each subVal in val.main_ingredients
-                li= subVal
-            if !Object.sub_ingredients
-              ul
-                each subVal in val.sub_ingredients
-                  li= subVal
-            p= val.instructions
-            p= val.notes
-          div(class='recipeDivide')
+          if recipesA_E.length == 0
+            h2 There are no Recipes matching this category, YET!
+          else
+            each val in recipesA_E
+              div(class='recipe')
+                h3= val.title
+                p= val.author
+                ul
+                  each subVal in val.main_ingredients
+                    li= subVal
+                if !Object.sub_ingredients
+                  ul
+                    each subVal in val.sub_ingredients
+                      li= subVal
+                p= val.instructions
+                p= val.notes
+              div(class='recipeDivide')
       div(id='recipesF_J')
         div(class='recipeFeed')
-        each val in recipesF_J
           div(class='recipe')
-            h3= val.title
-            p= val.author
-            ul
-              each subVal in val.main_ingredients
-                li= subVal
-            if !Object.sub_ingredients
-              ul
-                each subVal in val.sub_ingredients
-                  li= subVal
-            p= val.instructions
-            p= val.notes
-          div(class='recipeDivide')
+            if recipesF_J.length == 0
+              h2 There are no Recipes matching this category, YET!
+            else
+              each val in recipesF_J
+                h3= val.title
+                p= val.author
+                ul
+                  each subVal in val.main_ingredients
+                    li= subVal
+                if !Object.sub_ingredients
+                  ul
+                    each subVal in val.sub_ingredients
+                      li= subVal
+                p= val.instructions
+                p= val.notes
+              div(class='recipeDivide')
       div(id='recipesK_O')
         div(class='recipeFeed')
-        each val in recipesK_O
-          div(class='recipe')
-            h3= val.title
-            p= val.author
-            ul
-              each subVal in val.main_ingredients
-                li= subVal
-            if !Object.sub_ingredients
-              ul
-                each subVal in val.sub_ingredients
-                  li= subVal
-            p= val.instructions
-            p= val.notes
-          div(class='recipeDivide')
+          if recipesK_O.length == 0
+            h2 There are no Recipes matching this category, YET!
+          else
+            each val in recipesK_O
+              div(class='recipe')
+                h3= val.title
+                p= val.author
+                ul
+                  each subVal in val.main_ingredients
+                    li= subVal
+                if !Object.sub_ingredients
+                  ul
+                    each subVal in val.sub_ingredients
+                      li= subVal
+                p= val.instructions
+                p= val.notes
+              div(class='recipeDivide')
       div(id='recipesP_T')
         div(class='recipeFeed')
-        each val in recipesP_T
-          div(class='recipe')
-            h3= val.title
-            p= val.author
-            ul
-              each subVal in val.main_ingredients
-                li= subVal
-            if !Object.sub_ingredients
-              ul
-                each subVal in val.sub_ingredients
-                  li= subVal
-            p= val.instructions
-            p= val.notes
-          div(class='recipeDivide')
+          if recipesP_T.length == 0
+            h2 There are no Recipes matching this category, YET!
+          else
+            each val in recipesP_T
+              div(class='recipe')
+                h3= val.title
+                p= val.author
+                ul
+                  each subVal in val.main_ingredients
+                    li= subVal
+                if !Object.sub_ingredients
+                  ul
+                    each subVal in val.sub_ingredients
+                      li= subVal
+                p= val.instructions
+                p= val.notes
+              div(class='recipeDivide')
       div(id='recipesU_Z')
         div(class='recipeFeed')
-        each val in recipesU_Z
-          div(class='recipe')
-            h3= val.title
-            p= val.author
-            ul
-              each subVal in val.main_ingredients
-                li= subVal
-            if !Object.sub_ingredients
-              ul
-                each subVal in val.sub_ingredients
-                  li= subVal
-            p= val.instructions
-            p= val.notes
-          div(class='recipeDivide')
+          if recipesU_Z.length == 0
+            h2 There are no Recipes matching this category, YET!
+          else
+            each val in recipesU_Z
+              div(class='recipe')
+                h3= val.title
+                p= val.author
+                ul
+                  each subVal in val.main_ingredients
+                    li= subVal
+                if !Object.sub_ingredients
+                  ul
+                    each subVal in val.sub_ingredients
+                      li= subVal
+                p= val.instructions
+                p= val.notes
+              div(class='recipeDivide')
  
   script(type='text/javascript' src='/javascripts/recipes.js')
