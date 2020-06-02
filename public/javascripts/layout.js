@@ -25,7 +25,7 @@ axios.get('/user/me', { headers: { token, 'Content-Type': 'application/json' }})
         document.getElementById('profileFooter').style.display='block';
         document.getElementById('name').style.display='block';
         document.getElementById('name')
-            .innerText=`${window.user.last_name}, ${window.user.first_name} ${window.user.middle_name}`;
+            .innerHTML=`<a href='/profile' id='profileLink' id='name'>${window.user.last_name}, ${window.user.first_name} ${window.user.middle_name}</a>`;
     })
     .catch(() => {
         document.getElementById('login').style.display='block';

@@ -50,6 +50,8 @@ MongoClient.connect(url, function(err, client) {
     res.render('profile', {recipes});
   });
 
+  // Create new Recipe
+
   router.post(
     "/recipe_create",
     [
@@ -77,6 +79,17 @@ MongoClient.connect(url, function(err, client) {
        } catch (error) {
         console.log(error.message);
         res.status(500).send("Error in Saving");
+      }
+    });
+
+    // Delete Existing Recipe
+    router.delete('/recipe_delete', async (req, res) => {
+      try {
+        const id = req.params._id;
+        await Recipe.find({_id: id}).remove().exec();
+      } catch (error) {
+        console.log(error.message);
+        res.status(500).send("Error in Deleting");
       }
     });
 

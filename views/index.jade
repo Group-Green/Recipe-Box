@@ -5,7 +5,9 @@ block content
     div(id='recipeFeed')
       each val in recipes
         div(class='recipe')
-          h3= val.title
+          div(id='recipeHeader')
+            h3= val.title
+            span(id='recipeDelete' class='material-icons' style="display: none;") delete
           p= val.author
           ul
             each subVal in val.main_ingredients
@@ -17,5 +19,7 @@ block content
           p= val.instructions
           p= val.notes
         div(class='recipeDivide')
+
+  script(src='javascripts/index.js')
         
     

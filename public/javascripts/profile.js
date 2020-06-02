@@ -1,6 +1,8 @@
 const recipeCreationForm = document.getElementById('recipeCreationForm');
 const recipeCreationButton = document.getElementById('recipeCreationFormSubmit');
-console.log('Recipe Button', recipeCreationButton);
+const recipeDeleteButton = document.getElementById('recipeDelete');
+
+// Recipe Create Button
 recipeCreationButton.addEventListener('click', (e) => {
     e.preventDefault();
     alert('New Recipe Created!');
@@ -49,14 +51,62 @@ recipeCreationButton.addEventListener('click', (e) => {
     window.location = `/profile?id=${window.user._id}`;
 });
 
-document.getElementById('recipeCreatorButton').addEventListener('click', (e) => {
-    (e).preventDefault();
+// Recipe Delete Button
+recipeDeleteButton.addEventListener('click', (e) => {
+    e.preventDefault();
 
+    if(confirm('Are you sure you want to delete your Recipe?')) {
+        axios.delete('/recipe_delete/:_id')
+            .then(() => {
+            })
+            .catch((error) => {
+                const errors = error.response.data.errors;
+                const errorMsg = error.response.data.msg;
+                let msg = '';
+                if (errorMsg) {
+                    msg += `${errorMsg}\n`;
+                }
+                if (errors) {
+                    errors.forEach(error => msg += `${error.msg}\n`);
+                }
+                alert(msg);
+                return false;
+            });      
+    }
+});
+
+// Recipe Nav Buttons
+
+// Recipe Editor Button
+document.getElementById('recipeEditorButton').addEventListener('click', (e) => {
+    e.preventDefault();
+
+    document.getElementById('recipeCreation').style.display = 'none';
+    document.getElementById('profileRecipeSearchFeed').style.display = 'none';
+    document.getElementById('editRecipeSelection').style.display = 'block';
+});
+
+// Recipe List Select Recipe
+// document.getElementById('recipeEditorListTitleValue').addEventListener('click', (e) => {
+
+// })
+
+// Recipe No Recipes Cancel Button
+// document.getElementById('recipeListCancel').addEventListener('click', (e) => {
+//     e.preventDefault();
+
+//     window.location = '/profile';
+// })
+
+// Recipe Creator Button
+document.getElementById('recipeCreatorButton').addEventListener('click', (e) => {
     document.getElementById('profileRecipeSearchFeed').style.display = 'none';
     document.getElementById('recipeCreation').style.display = 'block';
+    document.getElementById('editRecipeSelection').style.display = 'none';
 });
 
 document.getElementById('myRecipesButton').addEventListener('click', (e) => {
+    document.getElementById('editRecipeSelection').style.display = 'none';
     document.getElementById('recipeCreation').style.display = 'none';
     document.getElementById('profileRecipeSearchFeed').style.display = 'block';
 });

@@ -149,7 +149,8 @@ div#profileRecipeSearchFeed {
   padding: 20px 20px 0;
 }
 
-div#recipeCreation {
+div#recipeCreation,
+div#recipeEditor {
   display: none;
   grid-column-start: 2;
   grid-column-end: 5;
@@ -161,28 +162,55 @@ div#recipeCreation {
   border-radius: 30px;
 }
 
-div#recipeCreationBody {
+div#recipeCreationBody,
+div#recipeEditorBody {
   margin: 15px;
-  height: 95%;
 }
 
-h1#recipeCreationHeader {
+h1#recipeCreationHeader,
+h1#recipeEditorHeader {
   text-align: center;
   text-transform: capitalize;
   border-bottom: 2px solid grey;
   padding-bottom: 5px;
 }
 
-form#recipeCreationForm {
+form#recipeCreationForm,
+form#recipeEditorForm {
   font-size: 115%;
   margin-left: 5%;
+}
+
+div#editRecipeSelection {
+  display: none;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 6;
+  width: 80%;
+  height: 80%;
+  justify-self: center;
+  align-self: center;
+  border: 3px solid;
+  border-radius: 10px;
+  padding: 15px
+}
+
+div#recipeList {
+  font-size: 125%;
+  margin: 15px auto 0;
+  width: 80%;
+}
+
+li#recipeEditorListTitleValue:hover {
+  color: grey;
 }
 
 input#recipeTitleField {
   width: 80%;
   height: 25px;
   padding: 5px;
-  margin: 2% 7%;
+  margin: 7px 7%;
 }
 
 textarea#recipeMainIngredientsField,
@@ -192,17 +220,19 @@ textarea#recipeNotesField {
   width: 80%;
   height: 50px;
   padding: 5px;
-  margin: 2% 7%;
+  margin: 7px 7%;
 }
 
-input#recipeCreationFormSubmit {
-  margin: 2% 7%;
+input#recipeCreationFormSubmit,
+input#recipeEditorFormSubmit {
+  margin: 7px 7%;
   width: 83%;
   height: 30px;
   border-radius: 15px;
 }
 
-input#recipeCreationFormSubmit:hover {
+input#recipeCreationFormSubmit:hover,
+input#recipeEditorFormSubmit:hover {
     background-color: darkgrey;
 }
 
@@ -217,6 +247,16 @@ button#profileLogoutButton {
 
 button#profileLogoutButton:hover {
   background-color: grey;
+}
+
+div#recipeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button#recipeDelete {
+  height: 25px;
 }
 
 li {

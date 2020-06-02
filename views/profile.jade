@@ -17,6 +17,8 @@ block content
           li
             button(class='recipeButton' id='recipeCreatorButton') Recipe Creator
           li
+            button(class='recipeButton' id='recipeEditorButton') Recipe Editor
+          li
             button(class='recipeButton' id='myRecipesButton') My Recipes
           li
             button(class='recipeButton' id='profileLogoutButton') Logout
@@ -28,7 +30,9 @@ block content
         else
           each val in recipes
             div(class='recipe')
-              h3= val.title
+              div(id='recipeHeader')
+                h3= val.title
+                span(id='recipeDelete' class='material-icons') delete
               p= val.author
               ul
                 each subVal in val.main_ingredients
@@ -62,13 +66,55 @@ block content
           br
           label Notes:
           br
-          textarea(type='text' placeholder='Notes' id='recipeNotesField' class='recipeFormField' name='notes' value=null required)
+          textarea(type='text' placeholder='Notes' id='recipeNotesField' class='recipeFormField' name='notes' value=null)
           br
           label Public:
           br
           input(type='checkbox' id='recipePublicField' class='recipeForm' name='public')
           br
           input(type='submit' value='Create Recipe' id='recipeCreationFormSubmit')
+    div(id='recipeEditor')
+      div(id='recipeEditorBody')
+        h1(id='recipeEditorHeader')='Edit Your Recipe'
+        form(id='recipeEditorForm')
+          label Title:
+          br
+          input(type='text' id='recipeTitleField' class='recipeFormField' name='title' required)
+          br
+          label Ingredients:
+          br
+          textarea(type='text' id='recipeMainIngredientsField' class='recipeFormField' name='mainIngredients' required)
+          br
+          label Other Ingredients:
+          br
+          textarea(type='text' id='recipeSubIngredientsField' class='recipeFormField' name='subIngredients')
+          br
+          label Instructions:
+          br
+          textarea(type='text' id='recipeInstructionsField' class='recipeFormField' name='instructions' required)
+          br
+          label Notes:
+          br
+          textarea(type='text' id='recipeNotesField' class='recipeFormField' name='notes')
+          br
+          label Public:
+          br
+          input(type='checkbox' id='recipePublicField' class='recipeForm' name='public')
+          br
+          input(type='submit' value='Update Recipe' id='recipeEditorFormSubmit')
+    div(id='editRecipeSelection')
+      div(id='recipeList')
+        if recipes.length == 0
+          p You don't have any Recipes
+          button(id='recipeListCancel' class='recipeButton')
+        else
+          h2 Select The Recipe You Want To Edit
+          ul
+            each val in recipes
+              li(id=`recipeEditorListTitleValue` class='profileListOfRecipes' value=`${val._id}`)=val.title
+
+
+
 
   script(src='javascripts/js.cookie.min.js')
   script(src='javascripts/axios.min.js')
