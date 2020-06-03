@@ -128,6 +128,7 @@ div.recipeDivide {
 }
 
 .collapsible {
+  margin-top: 2%;
   background-color: #777;
   color: white;
   cursor: pointer;
