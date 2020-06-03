@@ -98,3 +98,26 @@ p#signUpRequiredText {
     cursor: pointer;
     outline: none;
 }
+
+span#backArrow {
+    margin: 10px;
+    transform: scaleX(-1);
+    font-size: 30px;
+    color: grey;
+}
+
+span#backArrow:hover {
+    color: rgb(170,7,11);
+    transform: scaleX(-1);
+    transform: scale(-1.2);
+}
+
+a#userSignUp {
+    font-size: 75%;
+    color: black;
+}
+
+a#userSignUp:hover {
+    color: red;
+    transform: scale(1.1);
+}

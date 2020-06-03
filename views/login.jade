@@ -2,10 +2,11 @@ html
   head
     title Recipe Box | Login
     link(rel='stylesheet', type='text/css', href='/stylesheets/login_style.css')
+    link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
   body
     div(id='mainHolder')
       a(class='backImg' href='/')
-        img(class='backImg' src='#' alt='Arrow')
+        span(class='material-icons' id='backArrow') exit_to_app
       h1(id='loginHeader')='Login'
       form(id='loginForm')
         input(type='text' placeholder='Email' id='emailField' class='loginFormField' name='email' required)

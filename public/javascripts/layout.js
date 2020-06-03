@@ -25,7 +25,14 @@ axios.get('/user/me', { headers: { token, 'Content-Type': 'application/json' }})
         document.getElementById('profileFooter').style.display='block';
         document.getElementById('name').style.display='block';
         document.getElementById('name')
-            .innerHTML=`<a href='/profile' id='profileLink' id='name'>${window.user.last_name}, ${window.user.first_name} ${window.user.middle_name}</a>`;
+            .innerHTML=`<a href='/profile' id='profileNameLink'>${window.user.last_name}, ${window.user.first_name} ${window.user.middle_name}</a>`;
+        document.getElementById('profileNameLink').href = `/profile?id=${window.user._id}`;
+        // Show Recipe Delete Button For Admin
+        // console.log(window.user);
+
+        // if(window.user.admin_status) {
+        //     document.getElementsByClassName('recipeDelete').style.display = 'block';
+        // }
     })
     .catch(() => {
         document.getElementById('login').style.display='block';

@@ -26,9 +26,10 @@ block content
             h2 There are no Recipes
           else
             each val in allRecipes
-              div(class='recipe')
-                h3= val.title
-                p= val.author
+              button(type='button' class='collapsible')= val.title
+                span(id='recipeDelete' class='material-icons' style="display: none;") delete
+              div(class='content')
+                p= `Author: ${val.author}`
                 ul
                   each subVal in val.main_ingredients
                     li= subVal
@@ -38,16 +39,16 @@ block content
                       li= subVal
                 p= val.instructions
                 p= val.notes
-              div(class='recipeDivide')
       div(id='recipesA_E')
         div(class='recipeFeed')
           if recipesA_E.length == 0
             h2 There are no Recipes matching this category, YET!
           else
             each val in recipesA_E
-              div(class='recipe')
-                h3= val.title
-                p= val.author
+              button(type='button' class='collapsible')= val.title
+                span(id='recipeDelete' class='material-icons' style="display: none;") delete
+              div(class='content')
+                p= `Author: ${val.author}`
                 ul
                   each subVal in val.main_ingredients
                     li= subVal
@@ -57,16 +58,17 @@ block content
                       li= subVal
                 p= val.instructions
                 p= val.notes
-              div(class='recipeDivide')
       div(id='recipesF_J')
         div(class='recipeFeed')
           div(class='recipe')
             if recipesF_J.length == 0
               h2 There are no Recipes matching this category, YET!
             else
-              each val in recipesF_J
-                h3= val.title
-                p= val.author
+            each val in recipesF_J
+              button(type='button' class='collapsible')= val.title
+                span(id='recipeDelete' class='material-icons' style="display: none;") delete
+              div(class='content')
+                p= `Author: ${val.author}`
                 ul
                   each subVal in val.main_ingredients
                     li= subVal
@@ -76,16 +78,16 @@ block content
                       li= subVal
                 p= val.instructions
                 p= val.notes
-              div(class='recipeDivide')
       div(id='recipesK_O')
         div(class='recipeFeed')
           if recipesK_O.length == 0
             h2 There are no Recipes matching this category, YET!
           else
             each val in recipesK_O
-              div(class='recipe')
-                h3= val.title
-                p= val.author
+              button(type='button' class='collapsible')= val.title
+                span(id='recipeDelete' class='material-icons' style="display: none;") delete
+              div(class='content')
+                p= `Author: ${val.author}`
                 ul
                   each subVal in val.main_ingredients
                     li= subVal
@@ -95,16 +97,16 @@ block content
                       li= subVal
                 p= val.instructions
                 p= val.notes
-              div(class='recipeDivide')
       div(id='recipesP_T')
         div(class='recipeFeed')
           if recipesP_T.length == 0
             h2 There are no Recipes matching this category, YET!
           else
             each val in recipesP_T
-              div(class='recipe')
-                h3= val.title
-                p= val.author
+              button(type='button' class='collapsible')= val.title
+                span(id='recipeDelete' class='material-icons' style="display: none;") delete
+              div(class='content')
+                p= `Author: ${val.author}`
                 ul
                   each subVal in val.main_ingredients
                     li= subVal
@@ -114,16 +116,16 @@ block content
                       li= subVal
                 p= val.instructions
                 p= val.notes
-              div(class='recipeDivide')
       div(id='recipesU_Z')
         div(class='recipeFeed')
           if recipesU_Z.length == 0
             h2 There are no Recipes matching this category, YET!
           else
             each val in recipesU_Z
-              div(class='recipe')
-                h3= val.title
-                p= val.author
+              button(type='button' class='collapsible')= val.title
+                span(id='recipeDelete' class='material-icons' style="display: none;") delete
+              div(class='content')
+                p= `Author: ${val.author}`
                 ul
                   each subVal in val.main_ingredients
                     li= subVal
@@ -133,6 +135,5 @@ block content
                       li= subVal
                 p= val.instructions
                 p= val.notes
-              div(class='recipeDivide')
  
   script(type='text/javascript' src='/javascripts/recipes.js')

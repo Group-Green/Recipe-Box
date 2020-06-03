@@ -2,10 +2,11 @@ html
   head
     title Recipe Box | Sign Up
     link(rel='stylesheet', type='text/css', href='/stylesheets/sign_up_style.css')
+    link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
   body
     div(id='mainHolder')
       a(class='backImg' href='/')
-        img(class='backImg' src='#' alt='Arrow')
+        span(class='material-icons' id='backArrow') exit_to_app
       h1(id='signUpHeader')='Sign Up'
       p(id='signUpRequiredText')='Fields with a * are required.'
       form(id='signUpForm')

@@ -29,11 +29,10 @@ block content
           h3 You don't have any recipes... YET!
         else
           each val in recipes
-            div(class='recipe')
-              div(id='recipeHeader')
-                h3= val.title
-                span(id='recipeDelete' class='material-icons') delete
-              p= val.author
+            button(type='button' class='collapsible')= val.title
+              span(id='recipeDelete' class='material-icons' style="display: none;") delete
+            div(class='content')
+              p= `Author: ${val.author}`
               ul
                 each subVal in val.main_ingredients
                   li= subVal
@@ -43,7 +42,6 @@ block content
                     li= subVal
               p= val.instructions
               p= val.notes
-            div(class='recipeDivide')
     div(id='recipeCreation')
       div(id='recipeCreationBody')
         h1(id='recipeCreationHeader')='Create a Recipe'
@@ -113,9 +111,4 @@ block content
             each val in recipes
               li(id=`recipeEditorListTitleValue` class='profileListOfRecipes' value=`${val._id}`)=val.title
 
-
-
-
-  script(src='javascripts/js.cookie.min.js')
-  script(src='javascripts/axios.min.js')
   script(type='text/javascript' src='/javascripts/profile.js') 
