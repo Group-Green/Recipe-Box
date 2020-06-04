@@ -94,6 +94,8 @@ MongoClient.connect(url, function(err, client) {
   router.delete('/recipe_delete/:id', async (req, res) => {
     try {
       const _id = req.params.id;
+      console.log(`Deleting ${_id}`);
+
       const response = await Recipe.find({_id}).deleteOne();
       console.log(response);
       res.status(200).send('Recipe deleted');

@@ -15,14 +15,19 @@ for (i = 0; i < coll.length; i++) {
 }
 
 const recipeDeleteButton = document.getElementById('recipeDelete');
+let userAdminStatus = document.getElementById('spacer').getAttribute('userAdminStatus');
 
 // Recipe Delete Button
-recipeDeleteButton.addEventListener('click', (e) => {
+recipeDeleteButton && recipeDeleteButton.addEventListener('click', async (e) => {
     e.preventDefault();
+    e.stopImmediatePropagation();
+    
+    const recipeId = await e.target.getAttribute('data-recipe-id');
 
     if(confirm('Are you sure you want to delete your Recipe?')) {
-        axios.delete('/recipe_delete/:_id')
+        axios.delete(`/recipe_delete/${recipeId}`)
             .then(() => {
+                window.location.reload();
             })
             .catch((error) => {
                 const errors = error.response.data.errors;

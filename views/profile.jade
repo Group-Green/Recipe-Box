@@ -109,6 +109,7 @@ block content
           h2 Select The Recipe You Want To Edit
           ul
             each val in recipes
-              li(id=`recipeEditorListTitleValue` class='profileListOfRecipes' value=`${val._id}`)=val.title
+              li
+                button(id='profileListOfRecipes' class='recipeButton' data-recipe-id=val._id)=val.title
 
   script(type='text/javascript' src='/javascripts/profile.js') 

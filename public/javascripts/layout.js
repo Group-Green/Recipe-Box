@@ -11,7 +11,7 @@ window.user = {
 
 //Validate the token stored in Cookies
 axios.get('/user/me', { headers: { token, 'Content-Type': 'application/json' }})
-    .then((response) => {
+    .then(async (response) => {
         window.user = response.data;
         window.loggedIn = true;
         document.getElementById('profileLink').href = `/profile?id=${window.user._id}`;
@@ -29,11 +29,9 @@ axios.get('/user/me', { headers: { token, 'Content-Type': 'application/json' }})
         document.getElementById('profileNameLink').href = `/profile?id=${window.user._id}`;
         document.getElementById('profileFooterLink').href = `/profile?id=${window.user._id}`;
         // Show Recipe Delete Button For Admin
-        // console.log(window.user);
 
-        // if(window.user.admin_status) {
-        //     document.getElementsByClassName('recipeDelete').style.display = 'block';
-        // }
+        document.getElementById('spacer').setAttribute('userAdminStatus', window.user.admin_status);
+        
     })
     .catch(() => {
         document.getElementById('login').style.display='block';

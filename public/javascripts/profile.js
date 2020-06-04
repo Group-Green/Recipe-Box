@@ -76,10 +76,13 @@ recipeCreationButton.addEventListener('click', (e) => {
 recipeDeleteButton && recipeDeleteButton.addEventListener('click', async (e) => {
     e.preventDefault();
     e.stopImmediatePropagation();
+    
     const recipeId = await e.target.getAttribute('data-recipe-id');
 
     if(confirm('Are you sure you want to delete your Recipe?')) {
-        axios.delete(`/recipe_delete/${recipeId}`)
+
+        console.log('Deleting Recipe', recipeId);
+        axios.delete(`/recipe_delete/${recipeId.trim()}`)
             .then(() => {
                 window.location.reload();
             })
@@ -111,16 +114,18 @@ document.getElementById('recipeEditorButton').addEventListener('click', (e) => {
 });
 
 // Recipe List Select Recipe
-// document.getElementById('recipeEditorListTitleValue').addEventListener('click', (e) => {
+// document.getElementById('profileListOfRecipes').addEventListener('click', async (e) => {
+//     const recipeId = await e.target.getAttribute('data-recipe-id');
 
+//     console.log(recipeId);
 // })
 
 // Recipe No Recipes Cancel Button
-// document.getElementById('recipeListCancel').addEventListener('click', (e) => {
-//     e.preventDefault();
+document.getElementById('recipeListCancel') && document.getElementById('recipeListCancel').addEventListener('click', (e) => {
+    e.preventDefault();
 
-//     window.location = '/profile';
-// })
+    window.location.reload();
+})
 
 // Recipe Creator Button
 document.getElementById('recipeCreatorButton').addEventListener('click', (e) => {
