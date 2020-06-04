@@ -1,6 +1,10 @@
 // Show Recipe delete Button
 
-document.getElementById('recipeDelete').style.display = 'block';
+const recipeDeleteButton = document.getElementById('recipeDelete');
+
+if (recipeDeleteButton) {
+    recipeDeleteButton.style.display = 'block';
+}
 
 // Collapsible Recipes
 let coll = document.getElementsByClassName('collapsible');
@@ -20,13 +24,10 @@ for (i = 0; i < coll.length; i++) {
 
 const recipeCreationForm = document.getElementById('recipeCreationForm');
 const recipeCreationButton = document.getElementById('recipeCreationFormSubmit');
-const recipeDeleteButton = document.getElementById('recipeDelete');
 
 // Recipe Create Button
 recipeCreationButton.addEventListener('click', (e) => {
     e.preventDefault();
-    alert('New Recipe Created!');
-    console.log("I'm adding a recipe");
 
     const title = recipeCreationForm.title.value;
     const author = `${window.user.last_name}, ${window.user.first_name} ${window.user.middle_name}`;
@@ -53,7 +54,7 @@ recipeCreationButton.addEventListener('click', (e) => {
     axios.post('/recipe_create', new_recipe)
         .then(() => {
             alert('New Recipe Added.');
-            window.location = `/profile?id=${window.user._id}`;
+            window.location.reload();
         })
         .catch((error) => {
             const errors = error.response.data.errors;
@@ -67,17 +68,20 @@ recipeCreationButton.addEventListener('click', (e) => {
             }
             alert(msg);
             return false;
-        })
+        });
     window.location = `/profile?id=${window.user._id}`;
 });
 
 // Recipe Delete Button
-recipeDeleteButton.addEventListener('click', (e) => {
+recipeDeleteButton && recipeDeleteButton.addEventListener('click', async (e) => {
     e.preventDefault();
+    e.stopImmediatePropagation();
+    const recipeId = await e.target.getAttribute('data-recipe-id');
 
     if(confirm('Are you sure you want to delete your Recipe?')) {
-        axios.delete('/recipe_delete/:_id')
+        axios.delete(`/recipe_delete/${recipeId}`)
             .then(() => {
+                window.location.reload();
             })
             .catch((error) => {
                 const errors = error.response.data.errors;

@@ -3,6 +3,7 @@ const { check, validationResult} = require("express-validator/check");
 var router = express.Router();
 let MongoClient = require('mongodb').MongoClient;
 let assert = require('assert');
+const { v4: uuid } = require('uuid');
 let {Recipe} = require('../models');
 
 // Connection Url
@@ -23,7 +24,7 @@ MongoClient.connect(url, function(err, client) {
   const findRecipes = function() {
     const collection = db.collection('recipes');
     return collection.find({'public': true}).toArray();
-  }
+  };
 
   /* Find User Specific Recipes */
   const userRecipes = function(author_id) {
@@ -32,7 +33,13 @@ MongoClient.connect(url, function(err, client) {
     return collection.find({author_id}).toArray();
     // Tried to use 'author_id': window.user._id in query
     // error that window is not defined. Need alternative route
-  }
+  };
+
+  // Find listed recipes in Recipe Page
+  const findRecipesByRegex = function(regex) {
+    const collection = db.collection('recipes');
+    return collection.find({'title': regex, 'public': true}).toArray();
+  };
 
   /* GET home page. */
   router.get('/', async function(req, res, next) {
@@ -74,57 +81,35 @@ MongoClient.connect(url, function(err, client) {
       }
 
       try {
-        const newRecipe = new Recipe({ ...req.body});
+        const newRecipe = new Recipe({ ...req.body, _id: uuid()});
         await newRecipe.save();
+        res.status(201).send('Created');
        } catch (error) {
         console.log(error.message);
         res.status(500).send("Error in Saving");
       }
     });
 
-    // Delete Existing Recipe
-    router.delete('/recipe_delete', async (req, res) => {
-      try {
-        const id = req.params._id;
-        await Recipe.find({_id: id}).remove().exec();
-      } catch (error) {
-        console.log(error.message);
-        res.status(500).send("Error in Deleting");
-      }
-    });
-
-  // Find listed recipes in Recipe Page
-
-  const findRecipesA_E = function() {
-    const collection = db.collection('recipes');
-    return collection.find({'title': /^[a-eA-E]/gm, 'public': true}).toArray();
-  }
-  const findRecipesF_J = function() {
-    const collection = db.collection('recipes');
-    return collection.find({'title': /^[f-jF-J]/gm, 'public': true}).toArray();
-  }
-  const findRecipesK_O = function() {
-    const collection = db.collection('recipes');
-    return collection.find({'title': /^[k-oK-O]/gm, 'public': true}).toArray();
-  }
-  const findRecipesP_T = function() {
-    const collection = db.collection('recipes');
-    return collection.find({'title': /^[p-tP-T]/gm, 'public': true}).toArray();
-  }
-  const findRecipesU_Z = function() {
-    const collection = db.collection('recipes');
-    return collection.find({'title': /^[u-zU-Z]/gm, 'public': true}).toArray();
-  }
-
+  // Delete Existing Recipe
+  router.delete('/recipe_delete/:id', async (req, res) => {
+    try {
+      const _id = req.params.id;
+      const response = await Recipe.find({_id}).deleteOne();
+      console.log(response);
+      res.status(200).send('Recipe deleted');
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).send("Error in Deleting");
+    }
+  });
 
   /* GET recipes page */
-
   router.get('/recipes', async function(req, res, next) {
-    const recipesA_E = await findRecipesA_E();
-    const recipesF_J = await findRecipesF_J();
-    const recipesK_O = await findRecipesK_O();
-    const recipesP_T = await findRecipesP_T();
-    const recipesU_Z = await findRecipesU_Z();
+    const recipesA_E = await findRecipesByRegex(/^[a-eA-E]/gm);
+    const recipesF_J = await findRecipesByRegex(/^[f-jF-J]/gm);
+    const recipesK_O = await findRecipesByRegex(/^[k-oK-O]/gm);
+    const recipesP_T = await findRecipesByRegex(/^[p-tP-T]/gm);
+    const recipesU_Z = await findRecipesByRegex(/^[u-zU-Z]/gm);
     const allRecipes = await findRecipes();
 
     res.render('recipes', {allRecipes, recipesA_E, recipesF_J, recipesK_O, recipesP_T, recipesU_Z});

@@ -27,7 +27,7 @@ block content
           else
             each val in allRecipes
               button(type='button' class='collapsible')= val.title
-                span(id='recipeDelete' class='material-icons' style="display: none;") delete
+                span(id='recipeDelete' class='material-icons' data-recipe-id=val._id style="display: none;") delete
               div(class='content')
                 p= `Author: ${val.author}`
                 ul
@@ -46,7 +46,7 @@ block content
           else
             each val in recipesA_E
               button(type='button' class='collapsible')= val.title
-                span(id='recipeDelete' class='material-icons' style="display: none;") delete
+                span(id='recipeDelete' class='material-icons' data-recipe-id=val._id style="display: none;") delete
               div(class='content')
                 p= `Author: ${val.author}`
                 ul
@@ -66,7 +66,7 @@ block content
             else
             each val in recipesF_J
               button(type='button' class='collapsible')= val.title
-                span(id='recipeDelete' class='material-icons' style="display: none;") delete
+                span(id='recipeDelete' class='material-icons' data-recipe-id=val._id style="display: none;") delete
               div(class='content')
                 p= `Author: ${val.author}`
                 ul
@@ -85,7 +85,7 @@ block content
           else
             each val in recipesK_O
               button(type='button' class='collapsible')= val.title
-                span(id='recipeDelete' class='material-icons' style="display: none;") delete
+                span(id='recipeDelete' class='material-icons' data-recipe-id=val._id style="display: none;") delete
               div(class='content')
                 p= `Author: ${val.author}`
                 ul
@@ -104,7 +104,7 @@ block content
           else
             each val in recipesP_T
               button(type='button' class='collapsible')= val.title
-                span(id='recipeDelete' class='material-icons' style="display: none;") delete
+                span(id='recipeDelete' class='material-icons' data-recipe-id=val._id style="display: none;") delete
               div(class='content')
                 p= `Author: ${val.author}`
                 ul
@@ -123,7 +123,7 @@ block content
           else
             each val in recipesU_Z
               button(type='button' class='collapsible')= val.title
-                span(id='recipeDelete' class='material-icons' style="display: none;") delete
+                span(id='recipeDelete' class='material-icons' data-recipe-id=val._id style="display: none;") delete
               div(class='content')
                 p= `Author: ${val.author}`
                 ul

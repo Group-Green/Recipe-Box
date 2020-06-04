@@ -5,6 +5,8 @@ function recipe_data() {
     console.log('<<-- Creating default recipes for database -->>');
 
     const recipe_one = new Recipe({
+        _id: '1',
+        author_id: '1',
         title: 'Best Brownies',
         author: 'Angie',
         main_ingredients: [
@@ -29,6 +31,8 @@ function recipe_data() {
         public: true
     });
     const recipe_two = new Recipe({
+        _id: '2',
+        author_id: '2',
         title: 'Best Chocolate Chip Cookies',
         author: 'Dora',
         main_ingredients: [
@@ -49,6 +53,8 @@ function recipe_data() {
         public: true
     });
     const recipe_three = new Recipe({
+        _id: '3',
+        author_id: '3',
         title: 'Puff Pastry Waffles',
         author: 'Foodelicious',
         main_ingredients: [
